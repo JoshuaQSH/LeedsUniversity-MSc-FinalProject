@@ -68,9 +68,9 @@ class LimeTimeSeriesExplanation(object):
         data, yss, distances = self.__data_labels_distances(timeseries, classifier_fn, num_samples, num_slices,
                                                             training_set, replacement_method)
         if self.class_names is None:
-            self.class_names = [str(x) for x in range(yss[0].shape[0])]
+            self.class_names = [str(x) for x in range(yss.shape[0])]
         ret_exp = explanation.Explanation(domain_mapper=domain_mapper, class_names=self.class_names)
-        ret_exp.predict_proba = yss[0]
+        ret_exp.predict_proba = yss
         for label in labels:
             (ret_exp.intercept[int(label)],
              ret_exp.local_exp[int(label)],
@@ -136,16 +136,18 @@ class LimeTimeSeriesExplanation(object):
                 index = inact * values_per_slice
                 if replacement_method == 'mean':
                     # use mean as inactive
-                    tmp_series.iloc[index:(index + values_per_slice)] = np.mean(
-                        training_set.iloc[:, index:(index + values_per_slice)].mean())
+                    tmp_series[index:(index + values_per_slice)] = np.mean(
+                        training_set[:, index:(index + values_per_slice)].mean())
                 elif replacement_method == 'noise':
                     # use random noise as inactive
-                    tmp_series.iloc[index:(index + values_per_slice)] = np.random.uniform(min(training_set.min()),
-                                                                                        max(training_set.max()), len(
-                            tmp_series.iloc[index:(index + values_per_slice)]))
+                    # tmp_series.iloc[index:(index + values_per_slice)] = np.random.uniform(min(training_set.min()),
+                    #                                                                     max(training_set.max()), len(
+                    #         tmp_series.iloc[index:(index + values_per_slice)]))
+                    tmp_series[index:(index + values_per_slice)] = np.random.uniform(training_set.min(), training_set.max(), len(
+                            tmp_series[index:(index + values_per_slice)]))
                 elif replacement_method == 'total_mean':
                     # use total mean as inactive
-                    tmp_series.iloc[index:(index + values_per_slice)] = np.mean(training_set.mean())
+                    tmp_series[index:(index + values_per_slice)] = np.mean(training_set.mean())
             inverse_data.append(tmp_series)
         labels = classifier_fn(inverse_data)
         distances = distance_fn(data)
