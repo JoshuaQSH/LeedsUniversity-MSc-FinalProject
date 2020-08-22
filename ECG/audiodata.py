@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 """
 Created on Wed Jun 28 21:25:25 2017
-
 @author: bricklayer
+
+Amended on 22/08/2020 by Shenghao Qiu
 """
 
 import numpy as np
