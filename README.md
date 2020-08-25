@@ -4,7 +4,7 @@
 #### 201341954 sc19sq
 
 ### Introduction
-This project is the MSc final project of achieving ECG recordings classification. The electrocardiogram (ECG) is the standard non-invasive exam for the first diagnosis of possible heart disease. It is based on leads attached to the torso that record electrical potentials emanating from the heart as it contracts. These signals are then analysed visually by the clinician. Accurate differential diagnosis of various arrhythmias from just the ECG requires expertise as the signals vary based on the anatomy and positioning of the leads, as well as from beat-to-beat, and much research has been conducted in the past to automate feature extraction and diagnosis of ECG signals based on machine learning. However, the performance of the traditional machine learning recognition algorithm is not satisfactory. Even if the deep learning algorithm was used, it only improved the accuracy of Atrial Fibrillation (AF) recognition. There are still many shortcomings in the implementation process. <br> 
+This project is the MSc final project of achieving ECG recordings classification. <br>
 
 The goal of this project is to develop a hybrid deep learning model to classify the normal signals and AF signals in order to diagnose the cardiac arrhythmia. To be specific, there are multiplestepsincluding: <br>
 
