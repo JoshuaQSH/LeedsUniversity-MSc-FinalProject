@@ -6,7 +6,7 @@
 ### Introduction
 This project is the MSc final project of achieving ECG recordings classification. <br>
 
-The goal of this project is to develop a hybrid deep learning model to classify the normal signals and AF signals in order to diagnose the cardiac arrhythmia. 
+The goal and summory of this porject can be seen on the dissertation: Deep learning classification of ECG signals to diagnose heart disease <br>
 
 The preprocessed data can be downloaded from https://drive.google.com/file/d/1JhJrNgMxQrqHhLOiFMkzW9-PlelmQ7Is/view?usp=sharing <br>
 File's name: challenge2017.pkl <br>
